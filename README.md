@@ -8,10 +8,10 @@
 
 ###  Source Type ###
 
->  enum SOURCE_TYPE {
->   case ALL
->    case CAMERA
->    case PHOTO_LIBRARY
+> enum SOURCE_TYPE {
+> case ALL
+> case CAMERA
+> case PHOTO_LIBRARY
 > }
 
 * 只要掛了這個Protocol，一行就可以處理好以下的事情
