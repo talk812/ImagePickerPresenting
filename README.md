@@ -8,11 +8,9 @@
 
 ###  Source Type ###
 
-> enum SOURCE_TYPE {
-> case ALL
-> case CAMERA
-> case PHOTO_LIBRARY
-> }
+> 1. ALL
+> 2. CAMERA
+> 3. PHOTO_LIBRARY
 
 * 只要掛了這個Protocol，一行就可以處理好以下的事情
 > 1. 使用UIAlertController 詢問要開啟相機還是相簿
@@ -22,6 +20,6 @@
 
 ### 使用方法 ###
 
-> showCameraAlert(type: .ALL) { (image) in
->    self.myImageView.image = image
+>showCameraAlert(type: .ALL) { (image) in   
+>         self.myImageView.image = image  
 > }
