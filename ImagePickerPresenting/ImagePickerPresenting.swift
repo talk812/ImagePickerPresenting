@@ -31,7 +31,7 @@ final class ImagePickerController: UIImagePickerController {
 
 extension ImagePickerController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        if let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             imagePickerDelegate?.imagePickerControllerDidFinish(image: selectedImage, self)
         } else {
             imagePickerDelegate?.imagePickerControllerDidFinish(image: nil, self)
@@ -104,8 +104,12 @@ extension ImagePickerPresenting where Self: UIViewController {
     }
     
     func imagePickerControllerDidFinish(image: UIImage?, _ viewController: ImagePickerController) {
-        completionBlock?(image)
-        completionBlock = nil
+        if let image = image {
+            completionBlock?(image)
+            completionBlock = nil
+        } else {
+            completionBlock = nil
+        }
         viewController.dismiss(animated: true, completion: nil)
     }
     
