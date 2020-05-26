@@ -65,6 +65,8 @@ extension ImagePickerPresenting where Self: UIViewController {
                         self.present(imagePickerController, animated: true, completion: nil)
                     }
                 }
+            } else {
+                self.alertCameraAccessNeeded()
             }
         }
         
@@ -77,6 +79,8 @@ extension ImagePickerPresenting where Self: UIViewController {
                         self.present(imagePickerController, animated: true, completion: nil)
                     }
                 }
+            } else {
+                self.alertPhotosAccessNeeded()
             }
         }
         
