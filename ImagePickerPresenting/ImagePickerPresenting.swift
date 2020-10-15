@@ -156,6 +156,9 @@ extension ImagePickerPresenting where Self: UIViewController {
         case .denied, .restricted:
             alertPhotosAccessNeeded()
             break
+        case .limited:
+            completion(true)
+            break
         @unknown default:
             fatalError()
         }
