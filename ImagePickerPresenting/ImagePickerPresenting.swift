@@ -62,7 +62,11 @@ extension ImagePickerPresenting where Self: UIViewController {
                 imagePickerController.sourceType = .camera
                 self.accessCameraWithReminderPrompt { (accessGranted) in
                     DispatchQueue.main.async {
-                        self.present(imagePickerController, animated: true, completion: nil)
+                        if accessGranted {
+                            self.present(imagePickerController, animated: true, completion: nil)
+                        } else {
+                            self.alertCameraAccessNeeded()
+                        }
                     }
                 }
             } else {
@@ -76,7 +80,11 @@ extension ImagePickerPresenting where Self: UIViewController {
                 imagePickerController.sourceType = .photoLibrary
                 self.remindToGiveGalleryWithReminderPrompt { (accessGranted) in
                     DispatchQueue.main.async {
-                        self.present(imagePickerController, animated: true, completion: nil)
+                        if accessGranted {
+                            self.present(imagePickerController, animated: true, completion: nil)
+                        } else {
+                            self.alertPhotosAccessNeeded()
+                        }
                     }
                 }
             } else {
@@ -182,7 +190,9 @@ extension ImagePickerPresenting where Self: UIViewController {
             }
         }))
         
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     
@@ -204,6 +214,8 @@ extension ImagePickerPresenting where Self: UIViewController {
             }
         }))
         
-        self.present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
